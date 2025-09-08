@@ -1,0 +1,246 @@
+.calculator-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--bg-calculator);
+  max-width: 900px;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow:
+    var(--shadow-calculator),
+    0 0 0 1px var(--border-calculator);
+}
+
+/* Display Section */
+.display-header {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.display-header span {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.display-header span:nth-child(1) {
+  background: var(--color-window-close);
+}
+
+.display-header span:nth-child(2) {
+  background: var(--color-window-minimize);
+}
+
+.display-header span:nth-child(3) {
+  background: var(--color-window-maximize);
+}
+
+.display {
+  background: var(--bg-display);
+  padding: 50px 30px 20px 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.display-text {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--color-bg);
+  word-break: break-all;
+  line-height: 1;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Buttons Section */
+.buttons-grid {
+  gap: 1px;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+}
+
+.button-row {
+  gap: 1px;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+}
+
+/* Base Button Styles */
+.btn {
+  border: none;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  transition: all 0.15s ease;
+}
+
+.btn:hover {
+  background: var(--bg-button-hover);
+  border-color: var(--overlay-button);
+}
+
+/* Button Types */
+.btn-function {
+  background: var(--bg-button-function);
+  color: var(--color-bg);
+}
+
+.btn-function:hover {
+  background: var(--bg-button-function-hover);
+}
+
+.btn-number {
+  background: var(--bg-button-number);
+  color: var(--color-bg);
+  font-size: 1.7rem;
+}
+
+.btn-number:hover {
+  background: var(--bg-button-number-hover);
+}
+
+.btn-operator {
+  font-size: 1.5rem;
+  background: var(--bg-button-operator);
+  color: var(--color-bg);
+  font-weight: 600;
+}
+
+.btn-operator:hover {
+  background: var(--bg-button-operator-hover);
+}
+
+/* Special Button Styles */
+.btn-zero {
+  grid-column: span 2;
+}
+
+.btn-equals {
+  grid-column: span 1;
+}
+
+/* Button Press Animation */
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  transition:
+    width 0.3s ease,
+    height 0.3s ease;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--overlay-button);
+}
+
+.btn:active::before {
+  width: 100px;
+  height: 100px;
+}
+
+/* Responsive Design */
+
+/* 900px and below */
+@media (max-width: 900px) {
+  .calculator-container {
+    top: 70px;
+    left: 0;
+    height: calc(100vh - 70px);
+    transform: none;
+    border-radius: 0;
+  }
+
+  .display {
+    padding: 60px 25px 15px 25px;
+  }
+
+  .display-text {
+    font-size: 2.2rem;
+  }
+
+  .btn {
+    font-size: 1.4rem;
+    min-height: 92px;
+  }
+
+  .btn-number {
+    font-size: 1.6rem;
+  }
+
+  .btn-operator {
+    font-size: 1.4rem;
+  }
+}
+
+/* 700px and below */
+@media (max-width: 700px) {
+  .calculator-container {
+    top: 100px;
+    height: calc(100vh - 100px);
+  }
+
+  .display {
+    padding: 60px 25px 15px 25px;
+  }
+
+  .btn {
+    font-size: 1.2rem;
+    min-height: 85px;
+  }
+
+  .btn-number {
+    font-size: 1.4rem;
+  }
+
+  .display-header {
+    top: 12px;
+    left: 12px;
+  }
+
+  .display-header span {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 500px) {
+  .calculator-container {
+    top: 226px;
+    height: calc(100vh - 226px);
+  }
+
+  .display {
+    padding: 70px 25px 15px 25px;
+  }
+
+  .display-text {
+    font-size: 1.5rem;
+  }
+
+  .btn {
+    font-size: 0.9rem;
+    min-height: 60px;
+  }
+
+  .display-header span {
+    width: 16px;
+    height: 16px;
+  }
+}

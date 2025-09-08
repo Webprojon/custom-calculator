@@ -6,7 +6,11 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack serve --open --mode development",
-    "test": "jest"
+    "test": "jest",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "tsc --noEmit --watch",
+    "lint:ts": "eslint src/**/*.{ts,tsx}",
+    "lint:ts:fix": "eslint src/**/*.{ts,tsx} --fix"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +19,8 @@
   "devDependencies": {
     "@babel/core": "^7.28.4",
     "@babel/preset-env": "^7.28.3",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^24.3.1",
     "babel-loader": "^10.0.0",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^7.1.2",
@@ -28,6 +34,9 @@
     "mini-css-extract-plugin": "^2.9.4",
     "prettier": "^3.6.2",
     "style-loader": "^4.0.0",
+    "ts-jest": "^29.4.1",
+    "ts-loader": "^9.5.4",
+    "typescript": "^5.9.2",
     "webpack": "^5.101.3",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2"
@@ -38,6 +47,7 @@
     }
   },
   "lint-staged": {
-    "src/**/*.js": "eslint --fix"
+    "src/**/*.{js,ts,tsx}": "eslint --fix",
+    "src/**/*.ts": "tsc --noEmit"
   }
 }
