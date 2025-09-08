@@ -10,8 +10,7 @@
     "type-check": "tsc --noEmit",
     "type-check:watch": "tsc --noEmit --watch",
     "lint:ts": "eslint src/**/*.{ts,tsx}",
-    "lint:ts:fix": "eslint src/**/*.{ts,tsx} --fix",
-    "vercel-build": "mkdir -p public/css && cp -r src/css/* public/css/"
+    "lint:ts:fix": "eslint src/**/*.{ts,tsx} --fix"
   },
   "keywords": [],
   "author": "",
