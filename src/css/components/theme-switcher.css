@@ -23,7 +23,7 @@
   bottom: 0;
   transition: 0.5s;
   border-radius: 30px;
-  background: var(--bg-theme-slider);
+  background: var(--color-theme-slider);
 }
 
 .slider:before {
@@ -34,13 +34,13 @@
   border-radius: 50%;
   left: 10%;
   bottom: 15%;
-  box-shadow: inset 8px -4px 0px 0px var(--color-bg);
+  box-shadow: inset 8px -4px 0px 0px var(--color-theme);
   transition: 0.5s;
 }
 
 input:checked + .slider:before {
   transform: translateX(100%);
-  box-shadow: inset 15px -4px 0px 15px var(--color-bg);
+  box-shadow: inset 15px -4px 0px 15px var(--color-theme);
 }
 
 /* Responsive Design */
