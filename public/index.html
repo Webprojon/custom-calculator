@@ -3,9 +3,467 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Custom Calculator</title>
+    <title>Scientific Calculator</title>
+    <link rel="stylesheet" href="../src/css/main.css" />
   </head>
   <body>
-    <div id="app"></div>
+    <div class="app">
+      <label class="theme-switcher">
+        <input type="checkbox" />
+        <span class="slider"></span>
+      </label>
+
+      <main
+        class="calculator-container"
+        role="main"
+        aria-label="Scientific Calculator"
+      >
+        <!-- Calculator Display -->
+        <section
+          class="display-section"
+          aria-live="polite"
+          aria-label="Calculator display"
+        >
+          <div class="display-header">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+
+          <div
+            class="display"
+            id="display"
+            tabindex="0"
+            role="textbox"
+            aria-label="Current calculation result"
+          >
+            <span class="display-text" id="display-text">0</span>
+          </div>
+        </section>
+
+        <!-- Calculator Buttons Grid -->
+        <section
+          class="buttons-section"
+          role="group"
+          aria-label="Calculator buttons"
+        >
+          <div class="buttons-grid" id="buttons-grid">
+            <!-- Row 1 -->
+            <div class="button-row">
+              <button
+                class="btn btn-function"
+                data-action="parentheses"
+                data-value="("
+                aria-label="Open parenthesis"
+              >
+                (
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="parentheses"
+                data-value=")"
+                aria-label="Close parenthesis"
+              >
+                )
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="memory"
+                data-value="mc"
+                aria-label="Memory clear"
+              >
+                mc
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="memory"
+                data-value="m+"
+                aria-label="Memory add"
+              >
+                m+
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="memory"
+                data-value="m-"
+                aria-label="Memory subtract"
+              >
+                m-
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="memory"
+                data-value="mr"
+                aria-label="Memory recall"
+              >
+                mr
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="clear"
+                data-value="AC"
+                aria-label="All clear"
+              >
+                AC
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="toggle-sign"
+                data-value="+/-"
+                aria-label="Toggle positive negative"
+              >
+                +/-
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="percentage"
+                data-value="%"
+                aria-label="Percentage"
+              >
+                %
+              </button>
+              <button
+                class="btn btn-operator"
+                data-action="operator"
+                data-value="÷"
+                aria-label="Division"
+              >
+                ÷
+              </button>
+            </div>
+
+            <!-- Row 2-->
+            <div class="button-row">
+              <button
+                class="btn btn-function"
+                data-action="second-function"
+                data-value="2nd"
+                aria-label="Second function"
+              >
+                2nd
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="power"
+                data-value="x²"
+                aria-label="X squared"
+              >
+                x²
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="power"
+                data-value="x³"
+                aria-label="X cubed"
+              >
+                x³
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="power"
+                data-value="xʸ"
+                aria-label="X to the power of Y"
+              >
+                xʸ
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="exponential"
+                data-value="eˣ"
+                aria-label="E to the power of X"
+              >
+                eˣ
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="exponential"
+                data-value="10ˣ"
+                aria-label="10 to the power of X"
+              >
+                10ˣ
+              </button>
+              <button
+                class="btn btn-number"
+                data-action="number"
+                data-value="7"
+                aria-label="Number 7"
+              >
+                7
+              </button>
+              <button
+                class="btn btn-number"
+                data-action="number"
+                data-value="8"
+                aria-label="Number 8"
+              >
+                8
+              </button>
+              <button
+                class="btn btn-number"
+                data-action="number"
+                data-value="9"
+                aria-label="Number 9"
+              >
+                9
+              </button>
+              <button
+                class="btn btn-operator"
+                data-action="operator"
+                data-value="×"
+                aria-label="Multiplication"
+              >
+                ×
+              </button>
+            </div>
+
+            <!-- Row 3 -->
+            <div class="button-row">
+              <button
+                class="btn btn-function"
+                data-action="reciprocal"
+                data-value="1/x"
+                aria-label="Reciprocal"
+              >
+                1/x
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="root"
+                data-value="²√x"
+                aria-label="Square root"
+              >
+                ²√x
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="root"
+                data-value="³√x"
+                aria-label="Cube root"
+              >
+                ³√x
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="root"
+                data-value="ʸ√x"
+                aria-label="Y-th root of X"
+              >
+                ʸ√x
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="logarithm"
+                data-value="ln"
+                aria-label="Natural logarithm"
+              >
+                ln
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="logarithm"
+                data-value="log₁₀"
+                aria-label="Logarithm base 10"
+              >
+                log₁₀
+              </button>
+              <button
+                class="btn btn-number"
+                data-action="number"
+                data-value="4"
+                aria-label="Number 4"
+              >
+                4
+              </button>
+              <button
+                class="btn btn-number"
+                data-action="number"
+                data-value="5"
+                aria-label="Number 5"
+              >
+                5
+              </button>
+              <button
+                class="btn btn-number"
+                data-action="number"
+                data-value="6"
+                aria-label="Number 6"
+              >
+                6
+              </button>
+              <button
+                class="btn btn-operator"
+                data-action="operator"
+                data-value="-"
+                aria-label="Subtraction"
+              >
+                -
+              </button>
+            </div>
+
+            <!-- Row 4 -->
+            <div class="button-row">
+              <button
+                class="btn btn-function"
+                data-action="factorial"
+                data-value="x!"
+                aria-label="Factorial"
+              >
+                x!
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="trigonometry"
+                data-value="sin"
+                aria-label="Sine"
+              >
+                sin
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="trigonometry"
+                data-value="cos"
+                aria-label="Cosine"
+              >
+                cos
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="trigonometry"
+                data-value="tan"
+                aria-label="Tangent"
+              >
+                tan
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="constant"
+                data-value="e"
+                aria-label="Euler's number"
+              >
+                e
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="exponent"
+                data-value="EE"
+                aria-label="Enter exponent"
+              >
+                EE
+              </button>
+              <button
+                class="btn btn-number"
+                data-action="number"
+                data-value="1"
+                aria-label="Number 1"
+              >
+                1
+              </button>
+              <button
+                class="btn btn-number"
+                data-action="number"
+                data-value="2"
+                aria-label="Number 2"
+              >
+                2
+              </button>
+              <button
+                class="btn btn-number"
+                data-action="number"
+                data-value="3"
+                aria-label="Number 3"
+              >
+                3
+              </button>
+              <button
+                class="btn btn-operator"
+                data-action="operator"
+                data-value="+"
+                aria-label="Addition"
+              >
+                +
+              </button>
+            </div>
+
+            <!-- Row 5 -->
+            <div class="button-row">
+              <button
+                class="btn btn-function"
+                data-action="mode"
+                data-value="Rad"
+                aria-label="Radians mode"
+              >
+                Rad
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="hyperbolic"
+                data-value="sinh"
+                aria-label="Hyperbolic sine"
+              >
+                sinh
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="hyperbolic"
+                data-value="cosh"
+                aria-label="Hyperbolic cosine"
+              >
+                cosh
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="hyperbolic"
+                data-value="tanh"
+                aria-label="Hyperbolic tangent"
+              >
+                tanh
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="constant"
+                data-value="π"
+                aria-label="Pi constant"
+              >
+                π
+              </button>
+              <button
+                class="btn btn-function"
+                data-action="random"
+                data-value="Rand"
+                aria-label="Random number"
+              >
+                Rand
+              </button>
+              <button
+                class="btn btn-number btn-zero"
+                data-action="number"
+                data-value="0"
+                aria-label="Number 0"
+              >
+                0
+              </button>
+              <button
+                class="btn btn-number"
+                data-action="decimal"
+                data-value="."
+                aria-label="Decimal point"
+              >
+                .
+              </button>
+              <button
+                class="btn btn-operator btn-equals"
+                data-action="equals"
+                data-value="="
+                aria-label="Equals"
+              >
+                =
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="../src/index.ts"></script>
   </body>
 </html>

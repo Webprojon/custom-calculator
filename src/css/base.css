@@ -1,0 +1,51 @@
+:root {
+  /* Colors */
+  --color-bg: #ffffff;
+  --color-text: #19202c;
+
+  /* Background Colors */
+  --bg-gradient-start: #1a1a1a;
+  --bg-gradient-end: #2d2d2d;
+  --bg-calculator: #2a2a2a;
+  --bg-display: #48494a;
+  --bg-button-function: #5a5b5c;
+  --bg-button-function-hover: #696868;
+  --bg-button-number: #757677;
+  --bg-button-number-hover: #989898;
+  --bg-button-operator: #ff9500;
+  --bg-button-operator-hover: #f1a23b;
+  --bg-button-hover: #5a5a5a;
+  --bg-theme-slider: #48494a;
+
+  /* Window Control Colors */
+  --color-window-close: #ff5f56;
+  --color-window-minimize: #ffbd2e;
+  --color-window-maximize: #27c93f;
+
+  /* Border and Overlay Colors */
+  --border-calculator: rgba(255, 255, 255, 0.1);
+  --overlay-button: rgba(255, 255, 255, 0.2);
+
+  /* Shadows */
+  --shadow-calculator: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--color-text);
+  min-height: 100vh;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, sans-serif;
+  background: linear-gradient(
+    135deg,
+    var(--bg-gradient-start) 0%,
+    var(--bg-gradient-end) 100%
+  );
+}
