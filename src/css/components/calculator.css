@@ -219,8 +219,8 @@
 
 @media (max-width: 500px) {
   .calculator-container {
-    /*top: 226px;*/
-    /*height: calc(100vh - 226px);*/
+    top: 226px;
+    height: calc(100vh - 226px);
   }
 
   .display {
