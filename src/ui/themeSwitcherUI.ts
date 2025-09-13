@@ -36,7 +36,7 @@ export function switchTheme(checkbox: HTMLInputElement): void {
 
 export function initializeThemeSwitcher(): void {
   const label = createThemeSwitcher();
-  document.querySelector('.app')?.appendChild(label);
+  document.getElementById('root')?.appendChild(label);
 
   const checkbox = label.querySelector('input') as HTMLInputElement;
   if (!checkbox) return;

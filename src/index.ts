@@ -1,7 +1,7 @@
 // Import CSS files
 import './css/main.css';
 
-// Import calculator modules
+// Import JS files
 import './core/calculator';
-import './ui/domHandler';
-import './ui/themeSwitcher';
+import './ui/themeSwitcherUI';
+import './ui/calculatorButtonsUI';
