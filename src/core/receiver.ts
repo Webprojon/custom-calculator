@@ -20,6 +20,11 @@ export class CalculatorReceiver {
     return { ...this.state };
   }
 
+  setState(state: CalculatorState): void {
+    this.state = { ...state };
+    this.updateDisplay();
+  }
+
   setDisplay(value: string): void {
     this.state.display = value;
     this.updateDisplay();
@@ -105,7 +110,7 @@ export class CalculatorReceiver {
     this.updateDisplay();
   }
 
-  private updateDisplay(): void {
+  public updateDisplay(): void {
     const displayElement = document.getElementById('display-text');
     if (displayElement) {
       displayElement.textContent = this.state.display;
@@ -310,8 +315,8 @@ export class CalculatorReceiver {
     }
 
     let result = 0;
-    let term = (x - 1) / (x + 1);
-    let termSquared = term * term;
+    const term = (x - 1) / (x + 1);
+    const termSquared = term * term;
     let currentTerm = term;
 
     for (let i = 0; i < 100; i++) {

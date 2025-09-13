@@ -2,7 +2,7 @@ export default {
   testEnvironment: 'jest-environment-jsdom',
   preset: 'ts-jest',
   transform: {
-    '^.+\\.ts$': 'ts-jest',
+    '^.+\\.ts$': ['ts-jest', { useESM: true }],
     '^.+\\.js$': 'babel-jest',
   },
   moduleNameMapper: {
@@ -22,9 +22,4 @@ export default {
     '!src/**/*.spec.{ts,js}',
   ],
   extensionsToTreatAsEsm: ['.ts'],
-  globals: {
-    'ts-jest': {
-      useESM: true,
-    },
-  },
 };
