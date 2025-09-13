@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeAll, afterEach } from '@jest/globals';
+import { describe, it, expect, afterEach } from '@jest/globals';
 import {
   createThemeSwitcher,
   loadSavedTheme,
@@ -6,7 +6,7 @@ import {
   saveTheme,
   setCheckboxState,
   switchTheme,
-} from '../ui/themeSwitcher';
+} from '../ui/themeSwitcherUI';
 
 // Mock setup
 const mockLocalStorage = {

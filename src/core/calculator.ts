@@ -28,7 +28,7 @@ export class Calculator {
     });
   }
 
-  private handleButtonClick(action: string, value: string): void {
+  public handleButtonClick(action: string, value: string): void {
     this.invoker.executeCommand(action, value);
   }
 
@@ -45,6 +45,24 @@ export class Calculator {
     if (key === '.' || key === ',') {
       this.invoker.executeCommand('decimal', '.');
       return;
+    }
+
+    // Undo/Redo
+    if (event.ctrlKey || event.metaKey) {
+      switch (key) {
+        case 'z':
+          if (event.shiftKey) {
+            this.redo();
+          } else {
+            this.undo();
+          }
+          event.preventDefault();
+          return;
+        case 'y':
+          this.redo();
+          event.preventDefault();
+          return;
+      }
     }
 
     // Operators
@@ -90,5 +108,35 @@ export class Calculator {
 
   public getInvoker(): CalculatorInvoker {
     return this.invoker;
+  }
+
+  /**
+   * Handles undo operation
+   */
+  public undo(): void {
+    this.invoker.undo();
+  }
+
+  /**
+   * Handles redo operation
+   */
+  public redo(): void {
+    this.invoker.redo();
+  }
+
+  /**
+   * Checks if undo is available
+   * @returns True if undo is possible
+   */
+  public canUndo(): boolean {
+    return this.invoker.canUndo();
+  }
+
+  /**
+   * Checks if redo is available
+   * @returns True if redo is possible
+   */
+  public canRedo(): boolean {
+    return this.invoker.canRedo();
   }
 }

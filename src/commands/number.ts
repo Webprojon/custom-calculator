@@ -32,7 +32,7 @@ export class DecimalCommand implements Command {
     if (isNewNumber) {
       this.receiver.setDisplay('0.');
     } else if (!currentDisplay.includes('.')) {
-      this.receiver.setDisplay(currentDisplay + '.');
+      this.receiver.setDisplay(`${currentDisplay}.`);
     }
 
     this.receiver.setIsNewNumber(false);

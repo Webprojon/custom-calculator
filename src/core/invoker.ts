@@ -1,5 +1,6 @@
 import { Command } from '../types';
 import { CalculatorReceiver } from './receiver';
+import { HistoryManager } from './historyManager';
 
 // Import all command classes
 import { AddCommand } from '../commands/add';
@@ -33,7 +34,6 @@ import {
   ReciprocalCommand,
   ToggleSignCommand,
   ClearCommand,
-  ClearEntryCommand,
   RandomCommand,
   ConstantECommand,
   ConstantPiCommand,
@@ -48,13 +48,16 @@ import {
 } from '../commands/memory';
 import { NumberCommand, DecimalCommand } from '../commands/number';
 import { OperatorCommand, EqualsCommand } from '../commands/operator';
+import { UndoCommand, RedoCommand } from '../commands/undo';
 
 export class CalculatorInvoker {
   private receiver: CalculatorReceiver;
+  private historyManager: HistoryManager;
   private commandMap: Map<string, Command>;
 
   constructor() {
     this.receiver = new CalculatorReceiver();
+    this.historyManager = new HistoryManager();
     this.commandMap = new Map();
     this.initializeCommands();
   }
@@ -109,11 +112,26 @@ export class CalculatorInvoker {
 
     // Special operations
     this.commandMap.set('x!', new FactorialCommand(this.receiver));
+
+    // Undo/Redo operations
+    this.commandMap.set(
+      'undo',
+      new UndoCommand(this.receiver, this.historyManager),
+    );
+    this.commandMap.set(
+      'redo',
+      new RedoCommand(this.receiver, this.historyManager),
+    );
     this.commandMap.set('=', new EqualsCommand(this.receiver));
   }
 
   executeCommand(action: string, value: string): void {
     try {
+      // Save state before executing command (except for undo/redo)
+      if (action !== 'undo' && action !== 'redo') {
+        this.historyManager.saveState(this.receiver.getState());
+      }
+
       // Handle number input
       if (action === 'number') {
         const numberCommand = new NumberCommand(this.receiver, value);
@@ -194,7 +212,7 @@ export class CalculatorInvoker {
       this.receiver.setRightOperand(null);
       this.receiver.setOperator(null);
       this.receiver.setIsNewNumber(true);
-    } catch (error) {
+    } catch {
       this.receiver.handleError({
         message: 'Calculation error',
         type: 'INVALID_OPERATION',
@@ -204,5 +222,41 @@ export class CalculatorInvoker {
 
   getReceiver(): CalculatorReceiver {
     return this.receiver;
+  }
+
+  /**
+   * Executes undo operation
+   */
+  undo(): void {
+    const command = this.commandMap.get('undo');
+    if (command) {
+      command.execute();
+    }
+  }
+
+  /**
+   * Executes redo operation
+   */
+  redo(): void {
+    const command = this.commandMap.get('redo');
+    if (command) {
+      command.execute();
+    }
+  }
+
+  /**
+   * Checks if undo is available
+   * @returns True if undo is possible
+   */
+  canUndo(): boolean {
+    return this.historyManager.canUndo();
+  }
+
+  /**
+   * Checks if redo is available
+   * @returns True if redo is possible
+   */
+  canRedo(): boolean {
+    return this.historyManager.canRedo();
   }
 }
