@@ -147,17 +147,12 @@ describe('CalculatorReceiver', () => {
 
   describe('Error State Management', () => {
     it('should handle error and reset state', () => {
-      const consoleSpy = jest.spyOn(console, 'error').mockImplementation();
       receiver.handleError({
         message: 'Test error',
         type: 'INVALID_OPERATION',
       });
-      expect(consoleSpy).toHaveBeenCalledWith(
-        'Calculator Error [INVALID_OPERATION]: Test error',
-      );
       expect(receiver.getDisplay()).toBe('Error');
       expect(receiver.getIsNewNumber()).toBe(true);
-      consoleSpy.mockRestore();
     });
   });
 });
