@@ -163,11 +163,9 @@ export class CalculatorInvoker {
       const command = this.commandMap.get(value);
       if (command) {
         command.execute();
-      } else {
-        console.warn(`Unknown command: ${value}`);
       }
     } catch (error) {
-      console.error('Command execution error:', error);
+      // Error handling
     }
   }
 

@@ -121,7 +121,6 @@ export class CalculatorReceiver {
     this.state.display = 'Error';
     this.state.isNewNumber = true;
     this.updateDisplay();
-    console.error(`Calculator Error [${error.type}]: ${error.message}`);
   }
 
   // Mathematical operations
