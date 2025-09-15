@@ -1,0 +1,65 @@
+:root {
+  /* Light Theme Colors */
+  --color-text: #19202c;
+  --color-gradient-start: #f0f0f0;
+  --color-gradient-end: #e0e0e0;
+  --color-calculator: #ffffff;
+  --color-display: #e8e8e8;
+  --color-button-function: #cbcbcb;
+  --color-button-function-hover: #bdbcbc;
+  --color-button-number: #e0e0e0;
+  --color-button-number-hover: #d3d3d3;
+  --color-button-operator: #ff9500;
+  --color-button-operator-hover: #f1a23b;
+  --color-button-hover: #d0d0d0;
+  --color-theme: #ffffff;
+  --color-theme-slider: #a2a2a2;
+  --color-border-calculator: rgba(0, 0, 0, 0.1);
+  --color-shadow-calculator: 0 20px 40px rgba(0, 0, 0, 0.2);
+  --color-overlay-button: rgba(0, 0, 0, 0.1);
+
+  /* Window Control Colors */
+  --color-window-close: #ff5f56;
+  --color-window-minimize: #ffbd2e;
+  --color-window-maximize: #27c93f;
+}
+
+/* Dark Theme Colors */
+[data-theme='dark'] {
+  --color-text: #ffffff;
+  --color-gradient-start: #1a1a1a;
+  --color-gradient-end: #2d2d2d;
+  --color-calculator: #2a2a2a;
+  --color-display: #48494a;
+  --color-button-function: #5a5b5c;
+  --color-button-function-hover: #696868;
+  --color-button-number: #757677;
+  --color-button-number-hover: #989898;
+  --color-button-operator: #ff9500;
+  --color-button-operator-hover: #f1a23b;
+  --color-button-hover: #5a5a5a;
+  --color-theme-slider: #48494a;
+  --color-border-calculator: rgba(255, 255, 255, 0.1);
+  --color-shadow-calculator: 0 20px 40px rgba(0, 0, 0, 0.3);
+  --color-overlay-button: rgba(255, 255, 255, 0.2);
+}
+
+/* General Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--color-text);
+  min-height: 100vh;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, sans-serif;
+  background: linear-gradient(
+    135deg,
+    var(--color-gradient-start) 0%,
+    var(--color-gradient-end) 100%
+  );
+}
