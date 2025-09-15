@@ -59,13 +59,13 @@
 
 /* Buttons Section */
 .buttons-grid {
-  gap: 1px;
+  gap: 0.9px;
   display: grid;
   grid-template-rows: repeat(5, 1fr);
 }
 
 .button-row {
-  gap: 1px;
+  gap: 0.9px;
   display: grid;
   grid-template-columns: repeat(10, 1fr);
 }
